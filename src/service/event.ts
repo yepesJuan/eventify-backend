@@ -1,17 +1,17 @@
 import { getEventCollection } from "../gateway/dbConnect";
 import { ObjectId } from "mongodb";
-import { Eventos } from "../model/eventos";
+import { sportEvent } from "../model/sportEvent";
 
 export const getAllEvents = async () => {
   const col = await getEventCollection();
-  const events = await col.find({}).toArray();
+  const events = await col.find().toArray(); //find({})
   return events;
 };
-export const getEvent = async (id: ObjectId) => {
+export const getEvent = async (id: string) => {
   const col = await getEventCollection();
-  return col.findOne({ _id: id });
+  return col.findOne({ _id: new ObjectId(id) });
 };
-export const createEvent = async (event: Eventos) => {
+export const createEvent = async (event: sportEvent) => {
   const col = await getEventCollection();
   await col.insertOne(event);
 };

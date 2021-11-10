@@ -1,21 +1,50 @@
 import { Router } from "express";
-import { Eventos } from "../model/eventos";
-import { getAllEvents, createEvent, deleteEvent } from "../service/event";
+import { sportEvent } from "../model/sportEvent";
+import {
+  getAllEvents,
+  createEvent,
+  deleteEvent,
+  getEvent,
+} from "../service/event";
 
-export const eventosRouter = Router();
+export const sportEventRouter = Router();
 
-eventosRouter.get("/", async (req, res) => {
-  const eventos = await getAllEvents();
-  res.send(eventos);
+sportEventRouter.get("/", async (req, res) => {
+  try {
+    const events = await getAllEvents();
+    res.status(200).send(events);
+    console.log("all events");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
-eventosRouter.post("/", async (req, res) => {
-  const evento = req.body as Eventos;
-  await createEvent(evento);
-  res.send().status(201);
+sportEventRouter.get("/:id", async (req, res) => {
+  try {
+    const event = await getEvent(req.params.id);
+    res.status(200).send(event);
+    console.log("got by id");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
-eventosRouter.delete("/:id", async (req, res) => {
-  await deleteEvent(req.params.id);
-  res.send().status(201);
-  console.log("delete evento");
+
+sportEventRouter.post("/", async (req, res) => {
+  try {
+    const event = req.body as sportEvent;
+    await createEvent(event);
+    res.status(201).send();
+    console.log("created event");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+sportEventRouter.delete("/:id", async (req, res) => {
+  try {
+    const event = await deleteEvent(req.params.id);
+    res.status(202).send(event);
+    console.log("delete evento");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });

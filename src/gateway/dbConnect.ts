@@ -1,11 +1,12 @@
 import { MongoClient } from "mongodb";
-import { Eventos } from "../model/eventos";
+import { sportEvent } from "../model/sportEvent";
+import { MONGO_URL } from "./config";
 
 let _client: MongoClient;
 
 const getClient = async () => {
   if (!_client) {
-    _client = new MongoClient("mongodb://localhost:27017");
+    _client = new MongoClient(MONGO_URL);
     _client = await _client.connect();
   }
   return _client;
@@ -13,6 +14,6 @@ const getClient = async () => {
 export const getEventCollection = async () => {
   const client = await getClient();
   const db = client.db("db");
-  const col = db.collection<Eventos>("event");
+  const col = db.collection<sportEvent>("event");
   return col;
 };
