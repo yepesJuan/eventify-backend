@@ -31,9 +31,9 @@ sportEventRouter.get("/:id", async (req, res) => {
 
 sportEventRouter.post("/", async (req, res) => {
   try {
-    const event = req.body as sportEvent;
-    await createEvent(event);
-    res.status(201).send();
+    let body = req.body as sportEvent;
+    const event = await createEvent(body);
+    res.status(201).send(event);
     console.log("created event");
   } catch (err) {
     res.status(500).send(err);

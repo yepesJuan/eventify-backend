@@ -5,6 +5,7 @@ import { sportEvent } from "../model/sportEvent";
 export const getAllEvents = async () => {
   const col = await getEventCollection();
   const events = await col.find().toArray(); //find({})
+  console.log(events);
   return events;
 };
 export const getEvent = async (id: string) => {
