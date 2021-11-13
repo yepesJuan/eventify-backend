@@ -2,10 +2,13 @@
   "name": "restapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "start": "node ./dist/index.js",
+    "gcp-build": "tsc -p ."
+  
   },
   "author": "",
   "license": "ISC",

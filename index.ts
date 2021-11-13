@@ -39,3 +39,4 @@ app.use("/events", sportEventRouter);
 // app.get("/test", (req, res) => res.send("Works"));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+// exports.app = functions.https.onRequest(app);
