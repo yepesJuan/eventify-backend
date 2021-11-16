@@ -2,11 +2,12 @@ import { ObjectId } from "mongodb";
 
 export interface sportEvent {
   _id?: ObjectId;
-  userId: String;
-  name: string;
-  address: String;
-  image: String;
+  name: String;
+  sport: String;
   capacity: Number;
+  image: String;
+  address: String;
+  date: Date;
   description: String;
 }
 

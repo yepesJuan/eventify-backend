@@ -82,3 +82,4 @@ app.use("/events", route_1.sportEventRouter);
 // app.get("/test", (req, res) => res.send("Works"));
 app.listen(PORT, function () { return console.log("Listening on port " + PORT + "..."); });
 // exports.app = functions.https.onRequest(app);
+//# sourceMappingURL=index.js.map

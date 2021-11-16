@@ -91,7 +91,7 @@ exports.sportEventRouter.post("/", function (req, res) { return __awaiter(void 0
             case 1:
                 event_3 = _a.sent();
                 res.status(201).send(event_3);
-                console.log("created event");
+                console.log("created eventsss");
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
@@ -121,3 +121,4 @@ exports.sportEventRouter.delete("/:id", function (req, res) { return __awaiter(v
         }
     });
 }); });
+//# sourceMappingURL=route.js.map

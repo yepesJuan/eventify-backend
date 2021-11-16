@@ -98,3 +98,4 @@ var deleteEvent = function (id) { return __awaiter(void 0, void 0, void 0, funct
     });
 }); };
 exports.deleteEvent = deleteEvent;
+//# sourceMappingURL=event.js.map
