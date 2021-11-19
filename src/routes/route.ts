@@ -6,6 +6,7 @@ import {
   deleteEvent,
   getEvent,
 } from "../service/event";
+import { withAuthorization } from "../withAuthorization";
 
 export const sportEventRouter = Router();
 
@@ -19,7 +20,7 @@ sportEventRouter.get("/", async (req, res) => {
   }
 });
 
-sportEventRouter.get("/:id", async (req, res) => {
+sportEventRouter.get("/:id", withAuthorization, async (req, res) => {
   try {
     const event = await getEvent(req.params.id);
     res.status(200).send(event);
@@ -29,7 +30,7 @@ sportEventRouter.get("/:id", async (req, res) => {
   }
 });
 
-sportEventRouter.post("/", async (req, res) => {
+sportEventRouter.post("/", withAuthorization, async (req, res) => {
   try {
     let body = req.body as sportEvent;
     const event = await createEvent(body);
@@ -39,7 +40,7 @@ sportEventRouter.post("/", async (req, res) => {
     res.status(500).send(err);
   }
 });
-sportEventRouter.delete("/:id", async (req, res) => {
+sportEventRouter.delete("/:id", withAuthorization, async (req, res) => {
   try {
     const event = await deleteEvent(req.params.id);
     res.status(202).send(event);

@@ -14,29 +14,13 @@ admin.initializeApp({
   credential: admin.credential.cert(firebaseConfig),
 });
 
-const withAuthorization = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
-) => {
-  const jwt = req.headers.authorization!;
-  try {
-    const id = await admin.auth().verifyIdToken(jwt);
-    res.locals.userId = id.uid;
-  } catch {
-    res.status(403).send("Unathorized");
-    return;
-  }
-  next();
-};
-
-app.get("/authenticated", withAuthorization, (req, res) => {
-  return res.send({ your: "cool" }).status(200);
-});
+// app.get("/authenticated", withAuthorization, (req, res) => {
+//   return res.send({ your: "cool" }).status(200);
+// });
 
 app.use("/events", sportEventRouter);
 
 // app.get("/test", (req, res) => res.send("Works"));
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+app.listen(PORT, () => console.log(`Listening on port name ${PORT}...`));
 // exports.app = functions.https.onRequest(app);

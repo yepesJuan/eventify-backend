@@ -9,6 +9,7 @@ export interface sportEvent {
   address: String;
   date: Date;
   description: String;
+  userlist: [String];
 }
 
 // json test

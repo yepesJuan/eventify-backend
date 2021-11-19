@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sportEventRouter = void 0;
 var express_1 = require("express");
 var event_1 = require("../service/event");
+var withAuthorization_1 = require("../withAuthorization");
 exports.sportEventRouter = (0, express_1.Router)();
 exports.sportEventRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var events, err_1;
@@ -60,7 +61,7 @@ exports.sportEventRouter.get("/", function (req, res) { return __awaiter(void 0,
         }
     });
 }); });
-exports.sportEventRouter.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.get("/:id", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var event_2, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -80,7 +81,7 @@ exports.sportEventRouter.get("/:id", function (req, res) { return __awaiter(void
         }
     });
 }); });
-exports.sportEventRouter.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.post("/", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var body, event_3, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -101,7 +102,7 @@ exports.sportEventRouter.post("/", function (req, res) { return __awaiter(void 0
         }
     });
 }); });
-exports.sportEventRouter.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.delete("/:id", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var event_4, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
