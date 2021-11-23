@@ -9,9 +9,4 @@
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "sourceMap": true
   }, 
-  "include": [
-    "./src/**/*.ts",
-    "index.ts",
-    "withAuthorization.ts"
-  ]
 }

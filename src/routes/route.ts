@@ -5,6 +5,7 @@ import {
   createEvent,
   deleteEvent,
   getEvent,
+  addMember,
 } from "../service/event";
 import { withAuthorization } from "../withAuthorization";
 
@@ -33,6 +34,8 @@ sportEventRouter.get("/:id", withAuthorization, async (req, res) => {
 sportEventRouter.post("/", withAuthorization, async (req, res) => {
   try {
     let body = req.body as sportEvent;
+    body.ownerId = res.locals.userId;
+    body.userlist = [res.locals.userId];
     const event = await createEvent(body);
     res.status(201).send(event);
     console.log("created eventsss");
@@ -40,6 +43,22 @@ sportEventRouter.post("/", withAuthorization, async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+sportEventRouter.post(
+  "/addmember/:eventId",
+  withAuthorization,
+  async (req, res) => {
+    try {
+      const event = await addMember(req.params.eventId, res.locals.userId);
+      res.status(201).send(event);
+      console.log("added member");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  }
+);
+
 sportEventRouter.delete("/:id", withAuthorization, async (req, res) => {
   try {
     const event = await deleteEvent(req.params.id);

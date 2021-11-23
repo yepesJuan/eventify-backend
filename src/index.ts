@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import admin from "firebase-admin";
-import { sportEventRouter } from "./src/routes/route";
+import { sportEventRouter } from "./routes/route";
 import { firebaseConfig } from "./firebase-config";
 
 const PORT = process.env.PORT || 5000;

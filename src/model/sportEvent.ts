@@ -2,14 +2,15 @@ import { ObjectId } from "mongodb";
 
 export interface sportEvent {
   _id?: ObjectId;
-  name: String;
-  sport: String;
-  capacity: Number;
-  image: String;
-  address: String;
+  name: string;
+  sport: string;
+  capacity: number;
+  image: string;
+  address: string;
   date: Date;
-  description: String;
-  userlist: [String];
+  description: string;
+  userlist: string[];
+  ownerId: string;
 }
 
 // json test

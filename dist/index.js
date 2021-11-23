@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var firebase_admin_1 = __importDefault(require("firebase-admin"));
-var route_1 = require("./src/routes/route");
+var route_1 = require("./routes/route");
 var firebase_config_1 = require("./firebase-config");
 var PORT = process.env.PORT || 5000;
 var app = (0, express_1.default)();

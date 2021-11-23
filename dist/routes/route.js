@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sportEventRouter = void 0;
 var express_1 = require("express");
 var event_1 = require("../service/event");
+var withAuthorization_1 = require("../withAuthorization");
 exports.sportEventRouter = (0, express_1.Router)();
 exports.sportEventRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var events, err_1;
@@ -60,7 +61,7 @@ exports.sportEventRouter.get("/", function (req, res) { return __awaiter(void 0,
         }
     });
 }); });
-exports.sportEventRouter.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.get("/:id", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var event_2, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -80,18 +81,20 @@ exports.sportEventRouter.get("/:id", function (req, res) { return __awaiter(void
         }
     });
 }); });
-exports.sportEventRouter.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.post("/", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var body, event_3, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 body = req.body;
+                body.ownerId = res.locals.userId;
+                body.userlist = [res.locals.userId];
                 return [4 /*yield*/, (0, event_1.createEvent)(body)];
             case 1:
                 event_3 = _a.sent();
                 res.status(201).send(event_3);
-                console.log("created event");
+                console.log("created eventsss");
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
@@ -101,23 +104,45 @@ exports.sportEventRouter.post("/", function (req, res) { return __awaiter(void 0
         }
     });
 }); });
-exports.sportEventRouter.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.sportEventRouter.post("/addmember/:eventId", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var event_4, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, event_1.deleteEvent)(req.params.id)];
+                return [4 /*yield*/, (0, event_1.addMember)(req.params.eventId, res.locals.userId)];
             case 1:
                 event_4 = _a.sent();
-                res.status(202).send(event_4);
-                console.log("delete evento");
+                res.status(201).send(event_4);
+                console.log("added member");
                 return [3 /*break*/, 3];
             case 2:
                 err_4 = _a.sent();
+                console.log(err_4);
                 res.status(500).send(err_4);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
+exports.sportEventRouter.delete("/:id", withAuthorization_1.withAuthorization, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var event_5, err_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, event_1.deleteEvent)(req.params.id)];
+            case 1:
+                event_5 = _a.sent();
+                res.status(202).send(event_5);
+                console.log("delete evento");
+                return [3 /*break*/, 3];
+            case 2:
+                err_5 = _a.sent();
+                res.status(500).send(err_5);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+//# sourceMappingURL=route.js.map

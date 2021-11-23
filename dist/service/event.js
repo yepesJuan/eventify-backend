@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,8 +46,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteEvent = exports.createEvent = exports.getEvent = exports.getAllEvents = void 0;
+exports.deleteEvent = exports.addMember = exports.createEvent = exports.getEvent = exports.getAllEvents = void 0;
 var dbConnect_1 = require("../gateway/dbConnect");
 var mongodb_1 = require("mongodb");
 var getAllEvents = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -46,7 +66,7 @@ var getAllEvents = function () { return __awaiter(void 0, void 0, void 0, functi
             case 0: return [4 /*yield*/, (0, dbConnect_1.getEventCollection)()];
             case 1:
                 col = _a.sent();
-                return [4 /*yield*/, col.find().toArray()];
+                return [4 /*yield*/, col.find().sort({ date: 1 }).toArray()];
             case 2:
                 events = _a.sent();
                 console.log(events);
@@ -82,6 +102,25 @@ var createEvent = function (event) { return __awaiter(void 0, void 0, void 0, fu
     });
 }); };
 exports.createEvent = createEvent;
+var addMember = function (eventId, uid) { return __awaiter(void 0, void 0, void 0, function () {
+    var col, event, userlist;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, (0, dbConnect_1.getEventCollection)()];
+            case 1:
+                col = _a.sent();
+                return [4 /*yield*/, (0, exports.getEvent)(eventId)];
+            case 2:
+                event = _a.sent();
+                userlist = __spreadArray(__spreadArray([], ((event === null || event === void 0 ? void 0 : event.userlist) || []), true), [uid], false);
+                return [4 /*yield*/, col.updateOne({ _id: new mongodb_1.ObjectId(eventId) }, { $set: { userlist: userlist } })];
+            case 3:
+                _a.sent();
+                return [2 /*return*/, __assign(__assign({}, event), { userlist: userlist })];
+        }
+    });
+}); };
+exports.addMember = addMember;
 var deleteEvent = function (id) { return __awaiter(void 0, void 0, void 0, function () {
     var col, res;
     return __generator(this, function (_a) {
@@ -98,3 +137,4 @@ var deleteEvent = function (id) { return __awaiter(void 0, void 0, void 0, funct
     });
 }); };
 exports.deleteEvent = deleteEvent;
+//# sourceMappingURL=event.js.map
