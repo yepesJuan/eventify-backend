@@ -102,7 +102,7 @@ var createEvent = function (event) { return __awaiter(void 0, void 0, void 0, fu
     });
 }); };
 exports.createEvent = createEvent;
-var addMember = function (eventId, uid) { return __awaiter(void 0, void 0, void 0, function () {
+var addMember = function (eventId, name) { return __awaiter(void 0, void 0, void 0, function () {
     var col, event, userlist;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -112,7 +112,7 @@ var addMember = function (eventId, uid) { return __awaiter(void 0, void 0, void 
                 return [4 /*yield*/, (0, exports.getEvent)(eventId)];
             case 2:
                 event = _a.sent();
-                userlist = __spreadArray(__spreadArray([], ((event === null || event === void 0 ? void 0 : event.userlist) || []), true), [uid], false);
+                userlist = __spreadArray(__spreadArray([], ((event === null || event === void 0 ? void 0 : event.userlist) || []), true), [name], false);
                 return [4 /*yield*/, col.updateOne({ _id: new mongodb_1.ObjectId(eventId) }, { $set: { userlist: userlist } })];
             case 3:
                 _a.sent();

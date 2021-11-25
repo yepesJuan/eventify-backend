@@ -110,11 +110,11 @@ exports.sportEventRouter.post("/addmember/:eventId", withAuthorization_1.withAut
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, event_1.addMember)(req.params.eventId, res.locals.userId)];
+                return [4 /*yield*/, (0, event_1.addMember)(req.params.eventId, res.locals.name)];
             case 1:
                 event_4 = _a.sent();
                 res.status(201).send(event_4);
-                console.log("added member");
+                console.log(event_4);
                 return [3 /*break*/, 3];
             case 2:
                 err_4 = _a.sent();

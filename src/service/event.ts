@@ -17,10 +17,10 @@ export const createEvent = async (event: sportEvent) => {
   await col.insertOne(event);
 };
 
-export const addMember = async (eventId: string, uid: string) => {
+export const addMember = async (eventId: string, name: string) => {
   const col = await getEventCollection();
   const event = await getEvent(eventId);
-  const userlist = [...(event?.userlist || []), uid];
+  const userlist = [...(event?.userlist || []), name];
   await col.updateOne({ _id: new ObjectId(eventId) }, { $set: { userlist } });
   return { ...event, userlist };
 };

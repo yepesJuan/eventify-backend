@@ -49,9 +49,9 @@ sportEventRouter.post(
   withAuthorization,
   async (req, res) => {
     try {
-      const event = await addMember(req.params.eventId, res.locals.userId);
+      const event = await addMember(req.params.eventId, res.locals.name);
       res.status(201).send(event);
-      console.log("added member");
+      console.log(event);
     } catch (err) {
       console.log(err);
       res.status(500).send(err);
