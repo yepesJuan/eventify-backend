@@ -35,7 +35,7 @@ sportEventRouter.post("/", withAuthorization, async (req, res) => {
   try {
     let body = req.body as sportEvent;
     body.ownerId = res.locals.userId;
-    body.userlist = [res.locals.userId];
+    body.userlist = [res.locals.name];
     const event = await createEvent(body);
     res.status(201).send(event);
     console.log("created eventsss");

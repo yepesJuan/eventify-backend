@@ -89,7 +89,7 @@ exports.sportEventRouter.post("/", withAuthorization_1.withAuthorization, functi
                 _a.trys.push([0, 2, , 3]);
                 body = req.body;
                 body.ownerId = res.locals.userId;
-                body.userlist = [res.locals.userId];
+                body.userlist = [res.locals.name];
                 return [4 /*yield*/, (0, event_1.createEvent)(body)];
             case 1:
                 event_3 = _a.sent();
