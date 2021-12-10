@@ -1,5 +1,5 @@
 # Eventify 
-## final-project-backend
+## Backend 
 npm run gcp-build to compile typescript to javascript <br />
 gcloup app deploy <br />
 npm start to run in localhost
@@ -14,6 +14,8 @@ npm start to run in localhost
 
 
 ### :rocket: Techs
-- [Node.js](https://nodejs.org)
+- [Typescript.js](https://www.typescriptlang.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Express.js](https://expressjs.com/)
+
+### Front End is in a repo called final-project-frontend
