@@ -18,4 +18,4 @@ npm start to run in localhost
 - [MongoDB](https://www.mongodb.com/)
 - [Express.js](https://expressjs.com/)
 
-### Front End is in a repo called final-project-frontend
+### Front End is in a repo called eventify-frontend
