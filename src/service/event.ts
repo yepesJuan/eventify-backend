@@ -4,7 +4,7 @@ import { sportEvent } from "../model/sportEvent";
 
 export const getAllEvents = async () => {
   const col = await getEventCollection();
-  const events = await col.find().sort({ date: 1 }).toArray(); //find({})
+  const events = await col.find().sort({ date: 1 }).toArray();
   console.log(events);
   return events;
 };

@@ -11,7 +11,6 @@ export const withAuthorization = async (
     const id = await admin.auth().verifyIdToken(jwt);
     res.locals.userId = id.uid;
     res.locals.name = id.name;
-    console.log(id, id.displayName);
   } catch {
     res.status(403).send("Unathorized!");
     return;

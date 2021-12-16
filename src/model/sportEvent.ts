@@ -13,7 +13,7 @@ export interface sportEvent {
   ownerId: string;
 }
 
-// json test
+// json nodemon test
 /*
  { "userId": "iamworking",
   "name": "soccer",

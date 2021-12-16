@@ -14,13 +14,6 @@ admin.initializeApp({
   credential: admin.credential.cert(firebaseConfig),
 });
 
-// app.get("/authenticated", withAuthorization, (req, res) => {
-//   return res.send({ your: "cool" }).status(200);
-// });
-
 app.use("/events", sportEventRouter);
 
-// app.get("/test", (req, res) => res.send("Works"));
-
 app.listen(PORT, () => console.log(`Listening on port name ${PORT}...`));
-// exports.app = functions.https.onRequest(app);
