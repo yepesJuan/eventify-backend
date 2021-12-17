@@ -51,7 +51,6 @@ exports.sportEventRouter.get("/", function (req, res) { return __awaiter(void 0,
             case 1:
                 events = _a.sent();
                 res.status(200).send(events);
-                console.log("all events");
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
@@ -71,7 +70,6 @@ exports.sportEventRouter.get("/:id", withAuthorization_1.withAuthorization, func
             case 1:
                 event_2 = _a.sent();
                 res.status(200).send(event_2);
-                console.log("got by id");
                 return [3 /*break*/, 3];
             case 2:
                 err_2 = _a.sent();
@@ -94,7 +92,6 @@ exports.sportEventRouter.post("/", withAuthorization_1.withAuthorization, functi
             case 1:
                 event_3 = _a.sent();
                 res.status(201).send(event_3);
-                console.log("created eventsss");
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
@@ -114,11 +111,9 @@ exports.sportEventRouter.post("/addmember/:eventId", withAuthorization_1.withAut
             case 1:
                 event_4 = _a.sent();
                 res.status(201).send(event_4);
-                console.log(event_4);
                 return [3 /*break*/, 3];
             case 2:
                 err_4 = _a.sent();
-                console.log(err_4);
                 res.status(500).send(err_4);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -135,7 +130,6 @@ exports.sportEventRouter.delete("/:id", withAuthorization_1.withAuthorization, f
             case 1:
                 event_5 = _a.sent();
                 res.status(202).send(event_5);
-                console.log("delete evento");
                 return [3 /*break*/, 3];
             case 2:
                 err_5 = _a.sent();

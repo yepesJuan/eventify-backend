@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// json test
+// json nodemon test
 /*
  { "userId": "iamworking",
   "name": "soccer",

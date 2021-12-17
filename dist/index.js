@@ -15,11 +15,6 @@ app.use(express_1.default.json());
 firebase_admin_1.default.initializeApp({
     credential: firebase_admin_1.default.credential.cert(firebaseConfig_1.firebaseConfig),
 });
-// app.get("/authenticated", withAuthorization, (req, res) => {
-//   return res.send({ your: "cool" }).status(200);
-// });
 app.use("/events", route_1.sportEventRouter);
-// app.get("/test", (req, res) => res.send("Works"));
 app.listen(PORT, function () { return console.log("Listening on port name " + PORT + "..."); });
-// exports.app = functions.https.onRequest(app);
 //# sourceMappingURL=index.js.map
