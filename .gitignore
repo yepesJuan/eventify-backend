@@ -2,9 +2,9 @@ node_modules/
 config.ts
 config.js
 dist/
-firebaseConfig.js
+firebase-Config.js
 firebase-Config.ts
-firebaseConfig.js.map
+firebase-Config.js.map
 
 
 
