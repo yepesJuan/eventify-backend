@@ -38,14 +38,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getEventCollection = void 0;
 var mongodb_1 = require("mongodb");
-var config_1 = require("./config");
+var configDB_1 = require("./configDB");
 var _client;
 var getClient = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 if (!!_client) return [3 /*break*/, 2];
-                _client = new mongodb_1.MongoClient(config_1.MONGO_URL);
+                _client = new mongodb_1.MongoClient(configDB_1.MONGO_URL);
                 return [4 /*yield*/, _client.connect()];
             case 1:
                 _client = _a.sent();
