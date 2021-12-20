@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 import { sportEvent } from "../model/sportEvent";
-import { MONGO_URL } from "./configDB";
+import { MONGO_URL } from "./config";
 
 let _client: MongoClient;
 
